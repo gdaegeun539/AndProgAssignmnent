@@ -94,10 +94,10 @@ class MainActivity : AppCompatActivity() {
                 result = edit1.text.toString().toDouble() - edit2.text.toString().toDouble()
             }
             "Mul" -> {
-                result = edit1.text.toString().toDouble() - edit2.text.toString().toDouble()
+                result = edit1.text.toString().toDouble() * edit2.text.toString().toDouble()
             }
             "Div" -> {
-                result = edit1.text.toString().toDouble() - edit2.text.toString().toDouble()
+                result = edit1.text.toString().toDouble() / edit2.text.toString().toDouble()
             }
             "Mod" -> {
                 result = edit1.text.toString().toDouble() % edit2.text.toString().toDouble()
