@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun doCalc(stat: String) {
-        if (edit2.text.toString().toInt() == 0) {
+        if (edit2.text.toString().toDouble() == 0.0) {
             Toast.makeText(this, R.string.div_zero, Toast.LENGTH_SHORT).show()
             return
         }
