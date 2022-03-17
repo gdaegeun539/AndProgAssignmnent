@@ -3,11 +3,12 @@ package com.example.project4_2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.appcompat.widget.SwitchCompat
 
 class MainActivity : AppCompatActivity() {
     lateinit var text1 : TextView
     lateinit var text2 : TextView
-    lateinit var swAgree : CheckBox
+    lateinit var swAgree : SwitchCompat
     lateinit var rGroup1 : RadioGroup
     lateinit var rdoOreo : RadioButton
     lateinit var rdoPie : RadioButton
@@ -42,41 +43,46 @@ class MainActivity : AppCompatActivity() {
                 btnExit.visibility = android.view.View.VISIBLE
                 btnClear.visibility = android.view.View.VISIBLE
             } else {
-                text2.visibility = android.view.View.INVISIBLE
-                rGroup1.visibility = android.view.View.INVISIBLE
-                imgAndro.visibility = android.view.View.INVISIBLE
-                btnExit.visibility = android.view.View.INVISIBLE
-                btnClear.visibility = android.view.View.INVISIBLE
+                toInvisible()
             }
         }
-
-        rdoOreo.setOnCheckedChangeListener { compoundButton, b ->
-            TODO("Not yet Impl")
-        }
-
-        rdoPie.setOnCheckedChangeListener { compoundButton, b ->
-            TODO("Not yet Impl")
-        }
-
-        rdoQueenCake.setOnCheckedChangeListener { compoundButton, b ->
-            TODO("Not yet Impl")
+        
+        // 라디오 그룹 내에서 해당 버튼이 눌렸을 때 바꾸기
+        rGroup1.setOnCheckedChangeListener { _, btnId ->
+            when (btnId) {
+                R.id.RdoOreo -> { // 오레오 이미지
+                    imgAndro.setImageResource(R.drawable.oreo)
+                }
+                R.id.RdoPie -> { // 파이 이미지
+                    imgAndro.setImageResource(R.drawable.pie)
+                }
+                R.id.RdoQueenCake -> { // 10 이미지
+                    imgAndro.setImageResource(R.drawable.q10)
+                }
+            }
         }
 
         // 종료 버튼 클릭
         btnExit.setOnClickListener {
-            TODO("Not yet Impl")
-//            when (rGroup1.checkedRadioButtonId) {
-//                R.id.RdoDog -> imgPet.setImageResource(R.drawable.dog)
-//                R.id.RdoCat -> imgPet.setImageResource(R.drawable.cat)
-//                R.id.RdoRabbit -> imgPet.setImageResource(R.drawable.rabbit)
-//                else -> Toast.makeText(applicationContext, "동물 먼저 선택하세요",
-//                    Toast.LENGTH_SHORT).show()
-//            }
+            finish()
         }
         
         // 처음으로 버튼 클릭
         btnClear.setOnClickListener {
-            TODO("Not Yet Impl")
+            // 이미지뷰는 투명 색상을 통해 사라진 것 처럼 설정
+            rGroup1.clearCheck()
+            imgAndro.setImageResource(android.R.color.transparent)
+            swAgree.isChecked = false
+            toInvisible()
         }
+    }
+
+    // 위젯 가리는 메소드
+    private fun toInvisible() {
+        text2.visibility = android.view.View.INVISIBLE
+        rGroup1.visibility = android.view.View.INVISIBLE
+        imgAndro.visibility = android.view.View.INVISIBLE
+        btnExit.visibility = android.view.View.INVISIBLE
+        btnClear.visibility = android.view.View.INVISIBLE
     }
 }

@@ -56,8 +56,9 @@
 
     <ImageView
         android:id="@+id/ImgAndroid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
         android:visibility="invisible" />
 
     <Button
