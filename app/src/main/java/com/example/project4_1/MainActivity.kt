@@ -35,23 +35,35 @@ class MainActivity : AppCompatActivity() {
         notEdit = Toast.makeText(this, R.string.not_input, Toast.LENGTH_SHORT)
 
         btnAdd.setOnClickListener {
-            result = edit1.text.toString().toDouble() + edit2.text.toString().toDouble()
-            textResult.text = "계산 결과: " + result.toString()
+            if (isInput()) {
+                notEdit.show()
+            } else {
+                doCalc("Add")
+            }
         }
 
         btnSub.setOnClickListener {
-            result = edit1.text.toString().toDouble() - edit2.text.toString().toDouble()
-            textResult.text = "계산 결과 : " + result.toString()
+            if (isInput()) {
+                notEdit.show()
+            } else {
+                doCalc("Sub")
+            }
         }
 
         btnMul.setOnClickListener {
-            result = edit1.text.toString().toDouble() - edit2.text.toString().toDouble()
-            textResult.text = "계산 결과 : " + result.toString()
+            if (isInput()) {
+                notEdit.show()
+            } else {
+                doCalc("Mul")
+            }
         }
 
         btnDiv.setOnClickListener {
-            result = edit1.text.toString().toDouble() - edit2.text.toString().toDouble()
-            textResult.text = "계산 결과 : " + result.toString()
+            if (isInput()) {
+                notEdit.show()
+            } else {
+                doCalc("Div")
+            }
         }
 
         btnMod.setOnClickListener {
@@ -69,8 +81,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun doCalc(stat: String) {
-        // TODO: Not yet impl
-
         if (edit2.text.toString().toInt() == 0) {
             Toast.makeText(this, R.string.div_zero, Toast.LENGTH_SHORT).show()
             return
@@ -78,22 +88,22 @@ class MainActivity : AppCompatActivity() {
 
         when (stat) {
             "Add" -> {
-                // TODO: Not yet impl
+                result = edit1.text.toString().toDouble() + edit2.text.toString().toDouble()
             }
             "Sub" -> {
-                // TODO: Not yet impl
+                result = edit1.text.toString().toDouble() - edit2.text.toString().toDouble()
             }
             "Mul" -> {
-                // TODO: Not yet impl
+                result = edit1.text.toString().toDouble() - edit2.text.toString().toDouble()
             }
             "Div" -> {
-                // TODO: Not yet impl
+                result = edit1.text.toString().toDouble() - edit2.text.toString().toDouble()
             }
             "Mod" -> {
                 result = edit1.text.toString().toDouble() % edit2.text.toString().toDouble()
-                textResult.text = "계산 결과 : " + result.toString()
             }
         }
-
+        textResult.text = "계산 결과 : " + result.toString()
+        return
     }
 }
